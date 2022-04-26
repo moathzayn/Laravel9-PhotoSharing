@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 <div class="sidebar" data-color="rose" data-background-color="black" data-image="{{asset('assets')}}/admin/img/sidebar-1.jpg">    
     <div class="sidebar-wrapper">
+=======
+<div class="sidebar" data-color="rose" data-background-color="black" data-image="{{asset('assets')}}/admin/img/sidebar-1.jpg">
+      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          CT
+        </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          Creative Tim
+        </a></div>
+      <div class="sidebar-wrapper">
+>>>>>>> cf35df2 (category)
         <div class="user">
           <div class="photo">
             <img src="{{asset('assets')}}/admin/img/faces/avatar.jpg" />
@@ -19,6 +30,7 @@
                     <span class="sidebar-normal"> My Profile </span>
                   </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
                   <a class="nav-link" href="#">
                     <span class="sidebar-mini"> EP </span>
@@ -31,17 +43,25 @@
                     <span class="sidebar-normal"> Settings </span>
                   </a>
                 </li>
+=======
+>>>>>>> cf35df2 (category)
               </ul>
             </div>
           </div>
         </div>
         <ul class="nav">
+<<<<<<< HEAD
           <li class="nav-item active ">
             <a class="nav-link" href="../examples/dashboard.html">
+=======
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+>>>>>>> cf35df2 (category)
               <i class="material-icons">dashboard</i>
               <p> Dashboard </p>
             </a>
           </li>
+<<<<<<< HEAD
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
               <i class="material-icons">image</i>
@@ -292,3 +312,44 @@
     </div>
     
 </div>
+=======
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="material-icons">account_circle</i>
+              <p> User </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="material-icons">photo</i>
+              <p> Photo </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="material-icons">comment</i>
+              <p> Comment </p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/admin/category">
+              <i class="material-icons">grid_on</i>
+              <p> Category </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="material-icons">quiz</i>
+              <p> FAQ </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home">
+              <i class="material-icons">settings</i>
+              <p> Setting </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+>>>>>>> cf35df2 (category)
