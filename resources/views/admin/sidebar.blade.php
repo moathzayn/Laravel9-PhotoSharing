@@ -45,7 +45,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/admin/photo">
               <i class="material-icons">photo</i>
-              <p> Photo </p>
+              <p> Photos </p>
             </a>
           </li>
           <li class="nav-item">
