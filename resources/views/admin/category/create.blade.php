@@ -4,9 +4,9 @@
 
 @section('content')
 <div class="col-md-12">
-              <form id="RegisterValidation" action="/admin/category/store" method="post" >
-                  @csrf
-                <div class="card ">
+  <form id="RegisterValidation" action="/admin/category/store" method="post" enctype="multipart/form-data">
+    @csrf
+          <div class="card ">
                   <div class="card-header card-header-rose card-header-icon">
                     <div class="card-icon">
                       <i class="material-icons">library_add</i>
@@ -14,6 +14,18 @@
                     <h4 class="card-title">Add Category</h4>
                   </div>
                   <div class="card-body ">
+                    <div class="col-lg-5 col-md-6 col-sm-3">
+                    <div class="form-group bmd-form-group">
+                      <label for="exampleEmail" class="bmd-label-floating">Parent Category</label><br>
+                            <div class="dropdown bootstrap-select show-tick">
+                              <select class="selectpicker" name="parent_Id" data-style="select-with-transition" >
+                              <option value="0">Main Category</option>
+                              @foreach($data as $rs)
+                              <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}</option>
+                              @endforeach
+                              </select>
+                            </div>
+                          </div>
                     <div class="form-group bmd-form-group">
                       <label for="exampleEmail" class="bmd-label-floating">Title</label>
                       <input type="text" class="form-control" name="title" required="true" aria-required="true" >
@@ -34,7 +46,7 @@
                           </select>
                         </div>
                     
-                        <div class="col-md-4 col-sm-4">
+                <div class="">
                       <h4 class="title">Upload Image</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
@@ -53,8 +65,8 @@
                     </div>
                     <button type="submit" class="btn btn-rose">Save Category</button>
                   </div>
-                </div>
-              </form>
             </div>
+    </form>
+  </div>
 
 @endsection

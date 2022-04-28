@@ -4,19 +4,34 @@
 
 @section('content')
 <div class="col-md-12">
-              <form id="RegisterValidation" action="/admin/category/update/{{$data->id}}" method="post" >
+              <form id="RegisterValidation" action="/admin/category/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                   @csrf
                 <div class="card ">
                   <div class="card-header card-header-rose card-header-icon">
                     <div class="card-icon">
-                      <i class="material-icons">library_add</i>
+                      <i class="material-icons">edit</i>
                     </div>
-                    <h4 class="card-title">Edit {{$data->title}}</h4>
+                    <h4 class="card-title">Edit Category:{{$data->title}}</h4>
                   </div>
                   <div class="card-body ">
                     <div class="form-group bmd-form-group">
-                      <label for="exampleEmail" class="bmd-label-floating">Title</label>
-                      <input type="text" class="form-control" name="title" required="true" aria-required="true" value="{{$data->title}}" >
+                    <div class="dropdown bootstrap-select show-tick">
+                    <label for="exampleEmail" class="bmd-label-floating">Parent Category</label>
+                    <div class="dropdown bootstrap-select show-tick">
+                      
+                              <select class="selectpicker" name="parent_Id" data-style="select-with-transition" >
+                              @foreach($datalist as $rs)
+                              <option value="{{$rs->id}}" @if($rs->id==$data->parent_Id) selected="selected" @endif >
+                                {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}
+                              </option>
+                              @endforeach
+                              </select>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="form-group bmd-form-group">
+                    <label for="exampleEmail" class="bmd-label-floating">Title</label>
+                    <input type="text" class="form-control" name="title" required="true" aria-required="true" value="{{$data->title}}" >
                     </div>
                     <div class="form-group bmd-form-group">
                       <label for="exampleEmail" class="bmd-label-floating">Keywords</label>
@@ -39,7 +54,7 @@
                       <h4 class="title">Upload Image</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                          <img src="{{asset('assets')}}/admin/img/image_placeholder.jpg" alt="...">
+                          <img src="{{Storage::url($data->image)}}" alt="">
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                         <div>

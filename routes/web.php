@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminPanel\HomeController as AdminController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
+use App\Http\Controllers\AdminPanel\PhotoController as AdminPhotoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,11 +33,25 @@ Route::middleware([
     })->name('dashboard');
 });
 //**************************AdminPanel**************************//
-Route::get('/admin',[AdminController::class,'index'])->name('admin');
+Route::prefix('admin')->name('admin.')->group(function(){
+Route::get('/',[AdminController::class,'index'])->name('index');
 //**************************AdminPanel**************************//
-Route::get('/admin/category',[App\Http\Controllers\AdminPanel\CategoryController::class,'index'])->name('admin_category');
-Route::get('/admin/category/create',[AdminCategoryController::class,'create'])->name('admin_category_create');
-Route::post('/admin/category/store',[AdminCategoryController::class,'store'])->name('admin_category_store');
-Route::get('/admin/category/edit/{id}',[AdminCategoryController::class,'edit'])->name('admin_category_edit');
-Route::post('/admin/category/update/{id}',[AdminCategoryController::class,'update'])->name('admin_category_update');
-Route::get('/admin/category/show/{id}',[AdminCategoryController::class,'show'])->name('admin_category_show');
+    Route::prefix('category')->name('category.')->controller(AdminCategoryController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/delete/{id}','destroy')->name('delete');
+    });
+    Route::prefix('photo')->name('photo.')->controller(AdminPhotoController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/delete/{id}','destroy')->name('delete');
+    });
+});
