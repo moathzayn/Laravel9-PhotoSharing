@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -53,5 +54,12 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::post('/update/{id}','update')->name('update');
         Route::get('/show/{id}','show')->name('show');
         Route::get('/delete/{id}','destroy')->name('delete');
+    });
+    Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function(){
+        Route::get('/{uid}','index')->name('index');
+        Route::get('/create/{uid}','create')->name('create');
+        Route::post('/store/{uid}','store')->name('store');
+        Route::post('/update/{uid}/{id}','update')->name('update');
+        Route::get('/delete/{uid}/{id}','destroy')->name('delete');
     });
 });

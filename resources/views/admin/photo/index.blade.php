@@ -48,6 +48,11 @@
                                             <img src="{{Storage::url($rs->image)}}">
                                         @endif
                                     </td>
+                                        <td>
+                                            <a href="{{route('admin.image.index',['uid'=>$rs->id])}}" >
+                                            <img src="{{asset('assets')}}/admin/img/gallery.png"style="height: 40px">
+                                            </a>
+                                        </td>
                                     <td>{{$rs->status}}</td>
                                     <td class="td-actions text-right">
                                         <a href="/admin/photo/show/{{$rs->id}}"><button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="Show">
