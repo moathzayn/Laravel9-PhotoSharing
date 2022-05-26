@@ -11,6 +11,7 @@
   <link href="{{asset('assets')}}/admin/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <link href="{{asset('assets')}}/admin/demo/demo.css" rel="stylesheet" />
   <title>@yield('title')</title>
+    @yield('head')
 </head>
 <body class="">
 <dev class=".">

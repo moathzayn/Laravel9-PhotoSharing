@@ -1,5 +1,8 @@
 @extends('layouts.adminbase')
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+@endsection
 @section('title','Add Category')
 
 @section('content')
@@ -42,10 +45,10 @@
                           <div class="dropdown bootstrap-select show-tick">
                               <select class="selectpicker" name="status" data-style="select-with-transition"  required="true" title="Status" >
                             <option vaalue="on">On</option>
-                            <option value="off">Off</option>  
+                            <option value="off">Off</option>
                           </select>
                         </div>
-                    
+
                 <div class="">
                       <h4 class="title">Upload Image</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">

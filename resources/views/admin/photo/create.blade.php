@@ -1,7 +1,9 @@
 @extends('layouts.adminbase')
 
 @section('title','Add Photo')
-
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+@endsection
 @section('content')
 <div class="col-md-12">
   <form id="RegisterValidation" action="/admin/photo/store" method="post" enctype="multipart/form-data">
@@ -39,8 +41,10 @@
                       <input type="text" class="form-control" name="description" required="true" aria-required="true">
                     </div>
                         <div class="form-group bmd-form-group">
-                            <label for="exampleEmail" class="bmd-label-floating">Detail</label>
-                            <input type="text" class="form-control" name="detail" required="true" aria-required="true" >
+                            <label>Detail</label><br>
+                            <textarea type="text" id="detail" class="form-control" name="detail" required="true" aria-required="true">
+                                Detail
+                          </textarea>
                         </div>
                         <div class="form-group bmd-form-group">
                             <label for="exampleEmail" class="bmd-label-floating">Text</label>
@@ -80,5 +84,19 @@
             </div>
     </form>
   </div>
-
+<script>
+    $(function (){
+        $('.textarea').summernote()
+    })
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#detail' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

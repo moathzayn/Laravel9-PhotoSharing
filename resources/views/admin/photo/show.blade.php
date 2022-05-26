@@ -37,6 +37,10 @@
                                     <th style='width: 12px;'>Videlink</th>
                                     <td>{{$data->videlink}}</td>
                                     </tr>
+                                    <tr>
+                                        <th style='width: 12px;'>Detail</th>
+                                        <td>{!! $data->detail !!}</td>
+                                    </tr>
                                     <th style='width: 12px;'>Image</th>
                                     <td><img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}"</td>
                                     </tr>

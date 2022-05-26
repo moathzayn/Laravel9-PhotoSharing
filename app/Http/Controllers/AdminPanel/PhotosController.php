@@ -51,6 +51,7 @@ class PhotosController extends Controller
         $data->category_Id= $request->category_Id;
         $data->user_Id= $request->user_Id;
         $data->title= $request->title;
+        $data->detail= $request->detail;
         $data->keywords= $request->keywords;
         $data->description= $request->description;
         $data->like= $request->like;
@@ -119,6 +120,7 @@ class PhotosController extends Controller
         $data->rate= $request->rate;
         $data->comment= $request->comment;
         $data->text= $request->text;
+        $data->detail= $request->detail;
         $data->videlink= $request->videlink;
         $data->status= $request->status;
         if($request->file('image')){

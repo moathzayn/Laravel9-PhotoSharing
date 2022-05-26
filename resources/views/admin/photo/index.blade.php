@@ -35,24 +35,23 @@
                                     @foreach($data as $rs)
                                     <tr>
                                     <td class="text-center">{{$rs->id}}</td>
-                                    <td> {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</td>
+
                                     <td>{{$rs->title}}</td>
+                                        <td> {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</td>
                                     <td>{{$rs->keywords}}</td>
                                     <td>{{$rs->description}}</td>
-                                        <td>{{$rs->like}}</td>
-                                        <td>{{$rs->rate}}</td>
-                                        <td>{{$rs->videlink}}</td>
-                                        <td>{{$rs->detail}}</td>
+                                    <td>{{$rs->like}}</td>
+                                    <td>{{$rs->rate}}</td>
+                                    <td>{{$rs->videlink}}</td>
+                                    <td>{!!$rs->detail!!}</td>
                                     <td>
                                         @if($rs->image)
-                                            <img src="{{Storage::url($rs->image)}}">
+                                            <img src="{{Storage::url($rs->image)}}"style="height: 40px">
                                         @endif
                                     </td>
-                                        <td>
-                                            <a href="{{route('admin.image.index',['uid'=>$rs->id])}}" >
-                                            <img src="{{asset('assets')}}/admin/img/gallery.png"style="height: 40px">
-                                            </a>
-                                        </td>
+                                    <td>
+                                        <a href="{{route('admin.image.index',['uid'=>$rs->id])}}" ><img src="{{asset('assets')}}/admin/img/gallery.png" alt="" style="height: 40px"></a>
+                                    </td>
                                     <td>{{$rs->status}}</td>
                                     <td class="td-actions text-right">
                                         <a href="/admin/photo/show/{{$rs->id}}"><button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="Show">

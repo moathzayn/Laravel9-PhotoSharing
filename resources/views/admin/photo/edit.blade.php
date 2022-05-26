@@ -1,7 +1,9 @@
 @extends('layouts.adminbase')
 
 @section('title','Edit Photo:'.$data->title)
-
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+@endsection
 @section('content')
 <div class="col-md-12">
               <form id="RegisterValidation" action="/admin/photo/update/{{$data->id}}" method="post" enctype="multipart/form-data">
@@ -42,8 +44,13 @@
                       <input type="text" class="form-control" name="description" required="true" aria-required="true" value="{{$data->description}}">
                     </div>
                       <div class="form-group bmd-form-group">
-                          <label for="exampleEmail" class="bmd-label-floating">Detail</label>
-                          <input type="text" class="form-control" name="detail" required="true" aria-required="true" value="{{$data->detail}}" >
+                          <label>Detail</label>
+
+                          <textarea class="textarea" id='detail' name="detail">
+                            {{$data->detail}}
+
+                          </textarea>
+                      </div>
                       </div>
                       <div class="form-group bmd-form-group">
                           <label for="exampleEmail" class="bmd-label-floating">Text</label>
@@ -87,5 +94,20 @@
                 </div>
               </form>
             </div>
-
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/ist/summernote.min.js"></script>
+            <script>
+                $(function (){
+                    $('.textarea').summernote()
+                })
+            </script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#detail' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
