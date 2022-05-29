@@ -25,4 +25,5 @@
 @include('user.bar')
 @include('user.sidebar')
 @include('user.footer')
+@include('user.content')
 </body>
