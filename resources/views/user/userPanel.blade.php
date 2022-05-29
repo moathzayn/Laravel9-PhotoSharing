@@ -1,12 +1,7 @@
-@extends('layouts.home')
+@extends('layouts.userbase')
 @section('title','Home')
-@section('we','hi user')
-@section('sidebar')
-    @parent
- 
-    
-@endsection
- 
+
+
 @section('content')
-    <p>This is my body content.</p>
+
 @endsection
