@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home',[HomeController::class,'redirect']);
+Route::get('/home/photo/{id}',[HomeController::class,'photo'])->name('photo');
 
 Route::middleware([
     'auth:sanctum',
