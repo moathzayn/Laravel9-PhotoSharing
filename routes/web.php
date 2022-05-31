@@ -63,4 +63,7 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::post('/update/{uid}/{id}','update')->name('update');
         Route::get('/delete/{uid}/{id}','destroy')->name('delete');
     });
+    Route::get('/setting',[AdminController::class,'setting'])->name('setting');
+    Route::post('/setting/update',[AdminController::class,'settingUpdate'])->name('setting.update');
+
 });

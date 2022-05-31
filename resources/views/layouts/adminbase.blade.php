@@ -18,6 +18,7 @@
   @include("admin.sidebar")
   <dev class="main-panel ps ps--active-y">
     @include("admin.header")
+
     <div class="content">
       <div class="content">
         <div class="container-fluid">

@@ -67,7 +67,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="/admin/setting">
               <i class="material-icons">settings</i>
               <p> Setting </p>
             </a>

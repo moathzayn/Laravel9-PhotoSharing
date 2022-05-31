@@ -1,7 +1,7 @@
 @extends('layouts.adminbase')
 
 @section('title','Add Category')
-
+@yield('namepage','Create Image')
 @section('content')
 <div class="col-md-12">
   <form id="RegisterValidation" action="/admin/category/store" method="post" enctype="multipart/form-data">
@@ -42,10 +42,10 @@
                           <div class="dropdown bootstrap-select show-tick">
                               <select class="selectpicker" name="status" data-style="select-with-transition"  required="true" title="Status" >
                             <option vaalue="on">On</option>
-                            <option value="off">Off</option>  
+                            <option value="off">Off</option>
                           </select>
                         </div>
-                    
+
                 <div class="">
                       <h4 class="title">Upload Image</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
