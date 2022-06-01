@@ -24,10 +24,8 @@ class HomeController extends Controller
         return view('admin.setting',['data'=>$data]);
     }
     public function settingUpdate(Request $request){
-        echo "update";
-        exit();
         $id=$request->input('id');
-        $data=Setting::find($id);
+        $data=setting::find($id);
         $data->title=$request->input('title');
         $data->keywords=$request->input('keywords');
         $data->description=$request->input('description');
@@ -35,9 +33,11 @@ class HomeController extends Controller
         $data->address=$request->input('address');
         $data->phone=$request->input('phone');
         $data->fax=$request->input('fax');
+        $data->email=$request->input('email');
         $data->facebook=$request->input('facebook');
         $data->instagram=$request->input('instagram');
         $data->twitter=$request->input('twitter');
+        $data->youtube=$request->input('youtube');
         $data->smtpserver=$request->input('smtpserver');
         $data->smtpemail=$request->input('smtpemail');
         $data->smtppassword=$request->input('smtppassword');
@@ -46,11 +46,11 @@ class HomeController extends Controller
         $data->contact=$request->input('contact');
         $data->references=$request->input('references');
         if($request->file('icon')){
-            $data->image=$request->file('icon')->store('icon');
+            $data->icon=$request->file('icon')->store('icon');
         }
         $data->status=$request->input('status');
         $data->save();
-        return redirect()->route('admin_setting');
+        return redirect()->route('admin.setting');
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Photos;
+use App\Models\setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -16,9 +17,11 @@ class HomeController extends Controller
             if(Auth::user()->usertype=='0'){
                 $sliderdata=Category::limit(10)->get();
                 $imagedata=Photos::limit(4)->get();
+                $setting=setting::first();
                 return view('user.userPanel',[
                     'sliderdata'=>$sliderdata,
-                    'imagedata'=>$imagedata
+                    'imagedata'=>$imagedata,
+                    'setting'=>$setting
                 ]);
             }else{
                 return view('admin.adminPanel');

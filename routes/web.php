@@ -38,6 +38,10 @@ Route::middleware([
 Route::prefix('admin')->name('admin.')->group(function(){
 Route::get('/',[AdminController::class,'index'])->name('index');
 //**************************AdminPanel**************************//
+    Route::prefix('/setting')->name('setting')->controller(AdminController::class)->group(function() {
+        Route::get('/',  'setting')->name('');
+        Route::post('/update','settingUpdate')->name('.update');
+    });
     Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function(){
         Route::get('/','index')->name('index');
         Route::get('/create','create')->name('create');
@@ -63,7 +67,4 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::post('/update/{uid}/{id}','update')->name('update');
         Route::get('/delete/{uid}/{id}','destroy')->name('delete');
     });
-    Route::get('/setting',[AdminController::class,'setting'])->name('setting');
-    Route::post('/setting/update',[AdminController::class,'settingUpdate'])->name('setting.update');
-
 });
