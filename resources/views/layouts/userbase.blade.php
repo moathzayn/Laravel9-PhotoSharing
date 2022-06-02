@@ -1,10 +1,13 @@
-@extends('layouts.fontbase')
 <!DOCTYPE html>
 <html lang="en">
 <head>
-@section('description',$setting->description)
-@section('keywords',$setting->keywords)
-@section('icon',Storage::url($setting->icon))
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="author" content="Muaadh hesham mohammed haij">
+    <link rel="icon" type="image/x-icon" href="@yield('icon')">
 <link href="{{asset('assets')}}/user/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Raleway:400,500,700|Roboto:300,400,500,700,900|Ubuntu:300,300i,400,400i,500,500i,700" rel="stylesheet">

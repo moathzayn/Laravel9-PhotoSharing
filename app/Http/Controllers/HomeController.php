@@ -40,4 +40,26 @@ class HomeController extends Controller
             'sliderdata'=>$sliderdata,
         ]);
     }
+    public function aboutus(){
+        $setting=setting::first();
+        $sliderdata=Category::limit(10)->get();
+        return view('user.aboutus.aboutus',[
+            'setting'=>$setting,
+            'sliderdata'=>$sliderdata,
+        ]);
+    }public function references(){
+        $setting=setting::first();
+        $sliderdata=Category::limit(10)->get();
+        return view('user.references.references',[
+            'setting'=>$setting,
+            'sliderdata'=>$sliderdata,
+        ]);
+    }public function contact(){
+        $setting=setting::first();
+        $sliderdata=Category::limit(10)->get();
+        return view('user.contact.contact',[
+            'setting'=>$setting,
+            'sliderdata'=>$sliderdata,
+        ]);
+    }
 }

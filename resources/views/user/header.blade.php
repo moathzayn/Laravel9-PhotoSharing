@@ -31,7 +31,7 @@
                 <ul class="notifications">
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown"><i class="fa fa-users"></i>
-                            <span class="badge badge-color1 header-badge">3</span>
+                            <span class="badge badge-color1 header-badge"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-friend-requests ">
                             <li>
@@ -66,7 +66,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown"><i class="fa fa-info-circle"></i>
-                            <span class="badge badge-color2 header-badge">4</span>
+                            <span class="badge badge-color2 header-badge"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-help-cnter">
                             <li>
@@ -92,7 +92,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i>
-                            <span class="badge badge-color3 header-badge">9</span>
+                            <span class="badge badge-color3 header-badge"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-notifications-items ">
                             <li>

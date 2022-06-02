@@ -21,9 +21,13 @@ use App\Http\Controllers\AdminPanel\PhotosController as AdminPhotosController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//**************************AdminPanel**************************//
 Route::get('/home',[HomeController::class,'redirect']);
 Route::get('/home/photo/{id}',[HomeController::class,'photo'])->name('photo');
+Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
+Route::get('/references',[HomeController::class,'references'])->name('references');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+
 
 Route::middleware([
     'auth:sanctum',
