@@ -43,19 +43,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/admin/photo">
+            <a class="nav-link" href="{{route('admin.photos.index')}}">
               <i class="material-icons">photo</i>
               <p> Photos </p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="{{route('admin.message.index')}}">
               <i class="material-icons">comment</i>
-              <p> Comment </p>
+              <p> Messages </p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/category">
+            <a class="nav-link" href="/{{route('admin.category.index')}}">
               <i class="material-icons">grid_on</i>
               <p> Category </p>
             </a>

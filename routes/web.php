@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminPanel\HomeController as AdminController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\PhotosController as AdminPhotosController;
+use App\Http\Controllers\AdminPanel\MessageController as AdminMessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,13 +22,13 @@ use App\Http\Controllers\AdminPanel\PhotosController as AdminPhotosController;
 Route::get('/', function () {
     return view('welcome');
 });
-//**************************AdminPanel**************************//
+//**************************UserPanel**************************//
 Route::get('/home',[HomeController::class,'redirect']);
 Route::get('/home/photo/{id}',[HomeController::class,'photo'])->name('photo');
-Route::get('/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
-Route::get('/references',[HomeController::class,'references'])->name('references');
-Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-
+Route::get('/home/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
+Route::get('/home/references',[HomeController::class,'references'])->name('references');
+Route::get('/home/contact',[HomeController::class,'contact'])->name('contact');
+Route::post('/home/storemessage',[HomeController::class,'storemessage'])->name('storemessage');
 
 Route::middleware([
     'auth:sanctum',
@@ -70,5 +71,11 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::post('/store/{uid}','store')->name('store');
         Route::post('/update/{uid}/{id}','update')->name('update');
         Route::get('/delete/{uid}/{id}','destroy')->name('delete');
+    });
+    Route::prefix('/message')->name('message.')->controller(AdminMessageController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/show/{id}','show')->name('show');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/delete/{id}','destroy')->name('destroy');
     });
 });

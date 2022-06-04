@@ -1,7 +1,7 @@
 @extends('layouts.adminbase')
 
 @section('title','Show Category:'.$data->title)
-@yield('name','asldfkjasdfl')
+
 @section('content')
 <div class="col-md-12">
     <div class="card">

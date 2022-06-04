@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Message;
 use App\Models\Photos;
 use App\Models\setting;
 use Illuminate\Http\Request;
@@ -47,19 +48,33 @@ class HomeController extends Controller
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
         ]);
-    }public function references(){
+    }
+    public function references(){
         $setting=setting::first();
         $sliderdata=Category::limit(10)->get();
         return view('user.references.references',[
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
         ]);
-    }public function contact(){
+    }
+    public function contact(){
         $setting=setting::first();
         $sliderdata=Category::limit(10)->get();
         return view('user.contact.contact',[
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
         ]);
+    }
+    public function storemessage(Request $request){
+        $data= new Message();
+        $data->firstName=$request->input('firstName');
+        $data->lastName=$request->input('lastName');
+        $data->phone=$request->input('phone');
+        $data->email=$request->input('email');
+        $data->subject=$request->input('subject');
+        $data->message=$request->input('message');
+        $data->ip=$request->ip();
+        $data->save();
+        return redirect()->route('contact')->with('info','Your Message has been send , Thank You');
     }
 }
