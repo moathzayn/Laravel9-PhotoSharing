@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Photos;
@@ -36,14 +37,17 @@ class HomeController extends Controller
     public function photo($id){
         $sliderdata=Category::limit(10)->get();
         $photo=Photos::find($id);
+        $setting=setting::first();
         return view('user.photo.show',[
             'data'=>$photo,
             'sliderdata'=>$sliderdata,
+            'setting'=>$setting,
         ]);
     }
     public function aboutus(){
-        $setting=setting::first();
+
         $sliderdata=Category::limit(10)->get();
+        $setting=setting::first();
         return view('user.aboutus.aboutus',[
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
@@ -63,6 +67,16 @@ class HomeController extends Controller
         return view('user.contact.contact',[
             'setting'=>$setting,
             'sliderdata'=>$sliderdata,
+        ]);
+    }
+    public function faq(){
+        $setting=setting::first();
+        $sliderdata=Category::limit(10)->get();
+        $data=Faq::all();
+        return view('user.faq.faq',[
+            'setting'=>$setting,
+            'sliderdata'=>$sliderdata,
+            'data'=>$data,
         ]);
     }
     public function storemessage(Request $request){

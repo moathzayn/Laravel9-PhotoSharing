@@ -2,7 +2,6 @@
 @section('title', "".$setting->title)
 @section('description',$setting->description)
 @section('keywords',$setting->keywords)
-@section('icon',Storage::url($setting->icon))
 @section('content')
 <div id="all-output" class="col-md-10">
     <h1 class="new-video-title"><i class="fa fa-bolt"></i> Trending</h1>

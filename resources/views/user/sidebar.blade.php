@@ -17,6 +17,7 @@
                 <li><a href="{{route('aboutus')}}"><i class="fa fa-question-circle"></i>About Us</a></li>
                 <li><a href="{{route('contact')}}"><i class="fa fa-send-o"></i>Contact</a></li>
                 <li><a href="{{route('references')}}"><i class="fa fa-file-text"></i>References</a></li>
+                <li><a href="{{route('faq')}}"><span class="material-icons">quiz</span>FAQ</a></li>
             </ul>
         </div><!-- // sidebar-stick -->
         <div class="clear"></div>

@@ -55,13 +55,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/{{route('admin.category.index')}}">
+            <a class="nav-link" href="{{route('admin.category.index')}}">
               <i class="material-icons">grid_on</i>
               <p> Category </p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="{{route('admin.faq.index')}}">
               <i class="material-icons">quiz</i>
               <p> FAQ </p>
             </a>
