@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminPanel\HomeController as AdminController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\PhotosController as AdminPhotosController;
 use App\Http\Controllers\AdminPanel\MessageController as AdminMessageController;
+use App\Http\Controllers\AdminPanel\CommentController as AdminCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,7 @@ Route::get('/home/references',[HomeController::class,'references'])->name('refer
 Route::get('/home/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/home/storemessage',[HomeController::class,'storemessage'])->name('storemessage');
 Route::get('/home/faq',[HomeController::class,'faq'])->name('faq');
+Route::post('/home/storecomment',[HomeController::class,'storecomment'])->name('storecomment');
 
 Route::middleware([
     'auth:sanctum',
@@ -87,6 +89,12 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::get('/show/{id}','show')->name('show');
         Route::post('/update/{id}','update')->name('update');
         Route::post('/store','store')->name('store');
+        Route::get('/delete/{id}','destroy')->name('destroy');
+    });
+    Route::prefix('/comment')->name('comment.')->controller(AdminCommentController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/show/{id}','show')->name('show');
+        Route::post('/update/{id}','update')->name('update');
         Route::get('/delete/{id}','destroy')->name('destroy');
     });
 });

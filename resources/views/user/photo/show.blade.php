@@ -51,34 +51,90 @@
             <!-- Comments -->
             <div id="comments" class="post-comments">
                 <h3 class="post-box-title"><span></span> Comments</h3>
+                @foreach($comment as $rs)
                 <ul class="comments-list">
                     <li>
                         <div class="post_author">
                             <div class="img_in">
                                 <a href="#"><img src="demo_img/c1.jpg" alt=""></a>
                             </div>
-                            <a href="#" class="author-name">Rabie Elkheir</a>
-                            <time datetime="2017-03-24T18:18">{{$data->created_at}}</time>
+                            <a href="#" class="author-name">{{$rs->user->name}}</a>
+                            <time datetime="2017-03-24T18:18">{{$rs->created_at}}</time>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum</p>
-
-
-
+                        <p>{{$rs->comment}}</p>
+                        <div>Rate:
+                        @if($rs->rate=="1")★ @endif
+                        @if($rs->rate=="2")★★ @endif
+                        @if($rs->rate=="3")★★★ @endif
+                        @if($rs->rate=="4")★★★★ @endif
+                        @if($rs->rate=="5")★★★★★ @endif
+                        </div>
                     </li>
-
                 </ul>
-
-
+                @endforeach
+                @include('user.contact.message')
                 <h3 class="post-box-title">Add Comments</h3>
-                <form>
-                    <textarea class="form-control" rows="8" id="Message" placeholder="COMMENT"></textarea>
-                    <button type="button" id="contact_submit" class="btn btn-dm">Post Comment</button>
+                <form action="{{route('storecomment')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="photo_id" value="{{$data->id}}">
+                    <textarea class="form-control" name="comment" rows="8" id="Message" placeholder="COMMENT"></textarea>
+                    <p>Rate:</p>
+                    <fieldset class="rating">
+
+                        <input type="radio" id="star5" name="rate" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="rate" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="rate" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="rate" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="rate" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    </fieldset>
+                    <br><br>
+                    @auth
+                    <button type="submit" id="contact_submit" class="btn btn-dm">Post Comment</button>
+                    @else
+                        <a href="/login" class="btn btn-dm">Pleas Sign In To Post Comment</a>
+                    @endauth
                 </form>
             </div>
-            <!-- // Comments -->
-
-
-        </div><!-- // watch -->
+        </div>
     </div>
+<style>
 
+
+    /****** Style Star Rating Widget *****/
+
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input { display: none; }
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating > input:checked ~ label, /* show gold star when clicked */
+    .rating:not(:checked) > label:hover, /* hover current star */
+    .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+    .rating > input:checked + label:hover, /* hover current star when changing rating */
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+    .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+</style>
 @endsection

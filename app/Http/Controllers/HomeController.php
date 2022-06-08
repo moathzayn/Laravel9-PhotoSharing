@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
@@ -38,10 +39,12 @@ class HomeController extends Controller
         $sliderdata=Category::limit(10)->get();
         $photo=Photos::find($id);
         $setting=setting::first();
+        $comment= Comment::where('photo_id',$id)->get();
         return view('user.photo.show',[
             'data'=>$photo,
             'sliderdata'=>$sliderdata,
             'setting'=>$setting,
+            'comment'=>$comment,
         ]);
     }
     public function aboutus(){
@@ -90,5 +93,15 @@ class HomeController extends Controller
         $data->ip=$request->ip();
         $data->save();
         return redirect()->route('contact')->with('info','Your Message has been send , Thank You');
+    }
+    public function storecomment(Request $request){
+        $data= new Comment();
+        $data->user_id=Auth::id();
+        $data->photo_id=$request->input('photo_id');
+        $data->comment=$request->input('comment');
+        $data->rate=$request->input('rate');
+        $data->ip=$request->ip();
+        $data->save();
+        return redirect()->route('photo',['id'=>$request->input('photo_id')])->with('info','Your Message has been send , Thank You');
     }
 }

@@ -66,6 +66,12 @@
               <p> FAQ </p>
             </a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{route('admin.comment.index')}}">
+              <i class="material-icons">question_answer</i>
+              <p> Comments </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/setting">
               <i class="material-icons">settings</i>
