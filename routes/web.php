@@ -22,7 +22,7 @@ use App\Http\Controllers\AdminPanel\CommentController as AdminCommentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.userPanel');
 });
 //**************************UserPanel**************************//
 Route::get('/home',[HomeController::class,'redirect']);
@@ -33,6 +33,9 @@ Route::get('/home/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/home/storemessage',[HomeController::class,'storemessage'])->name('storemessage');
 Route::get('/home/faq',[HomeController::class,'faq'])->name('faq');
 Route::post('/home/storecomment',[HomeController::class,'storecomment'])->name('storecomment');
+Route::get('/loginuser',[HomeController::class,'loginuser'])->name('login');
+Route::get('/register',[HomeController::class,'register'])->name('register');
+Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 
 Route::middleware([
     'auth:sanctum',

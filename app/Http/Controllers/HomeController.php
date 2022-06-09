@@ -34,7 +34,6 @@ class HomeController extends Controller
         }
     }
 
-
     public function photo($id){
         $sliderdata=Category::limit(10)->get();
         $photo=Photos::find($id);
@@ -45,6 +44,23 @@ class HomeController extends Controller
             'sliderdata'=>$sliderdata,
             'setting'=>$setting,
             'comment'=>$comment,
+        ]);
+    }
+    
+    public function loginuser(){
+        $sliderdata=Category::limit(10)->get();
+        $setting=setting::first();
+        return view('user.login',[
+            'sliderdata'=>$sliderdata,
+            'setting'=>$setting,
+        ]);
+    }
+    public function register(){
+        $sliderdata=Category::limit(10)->get();
+        $setting=setting::first();
+        return view('user.register',[
+            'sliderdata'=>$sliderdata,
+            'setting'=>$setting,
         ]);
     }
     public function aboutus(){
@@ -103,5 +119,11 @@ class HomeController extends Controller
         $data->ip=$request->ip();
         $data->save();
         return redirect()->route('photo',['id'=>$request->input('photo_id')])->with('info','Your Message has been send , Thank You');
+    }
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return $this->redirect('/');
     }
 }

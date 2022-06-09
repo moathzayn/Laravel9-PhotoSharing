@@ -137,18 +137,29 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-3 hidden-xs hidden-sm">
                 <div class="dropdown">
+                    @auth
                     <a data-toggle="dropdown" href="#" class="user-area">
                         <div class="thumb"><img src="{{asset('assets')}}/user/demo_img/user-1.png" alt=""></div>
-                        <h2>Rabie Elkheir</h2>
+                        <h2>{{Auth::user()->name}}</h2>
                         <h3>25 subscribers</h3>
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu account-menu">
-                        <li><a href="#"><i class="fa fa-edit color-1"></i>Edit profile</a></li>
-                        <li><a href="#"><i class="fa fa-video-camera color-2"></i>add video</a></li>
-                        <li><a href="#"><i class="fa fa-star color-3"></i>Favorites</a></li>
-                        <li><a href="#"><i class="fa fa-sign-out color-4"></i>sign out</a></li>
-                    </ul>
+                        <ul class="dropdown-menu account-menu">
+                            <li><a href="#"><i class="fa fa-edit color-1"></i>Edit profile</a></li>
+                            <li><a href="#"><i class="fa fa-video-camera color-2"></i>add video</a></li>
+                            <li><a href="#"><i class="fa fa-star color-3"></i>Favorites</a></li>
+                            <li><a href="{{route('logout')}}"><i class="fa fa-sign-out color-4"></i>Logout</a></li>
+                        </ul>
+                    @endauth
+                    @guest
+                        <div class="col-lg-3 col-md-3 col-sm-5 hidden-xs hidden-sm">
+                            <ul class="top-menu">
+                                <li><a href="{{route('register')}}">Register</a>
+                                <li><a href="{{route('login')}}">Login</a></li>
+                            </ul>
+                        </div>
+                    @endguest
+
                 </div>
             </div>
         </div><!-- // row -->
