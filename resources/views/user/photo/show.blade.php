@@ -18,6 +18,15 @@
                 <ul class="like">
                     <li><a class="deslike" href="#"> <i class="fa fa-thumbs-down"></i></a></li>
                     <li><a class="like" href="#">{{$data->like}} <i class="fa fa-thumbs-up"></i></a></li>
+                    <li><h5>Rate:
+                        @php
+                            $average=$comment->average('rate');
+                            @endphp
+                            @if($average=="1")★ @endif
+                            @if($average=="2")★★ @endif
+                            @if($average=="3")★★★ @endif
+                            @if($average=="4")★★★★ @endif
+                            @if($average=="5")★★★★★ @endif</h5></li>
                 </ul>
                 <ul class="social_link">
                     <li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -50,7 +59,7 @@
 
             <!-- Comments -->
             <div id="comments" class="post-comments">
-                <h3 class="post-box-title"><span></span> Comments</h3>
+                <h3 class="post-box-title"><span></span> Comments ({{$comment->count('id')}})</h3>
                 @foreach($comment as $rs)
                 <ul class="comments-list">
                     <li>
