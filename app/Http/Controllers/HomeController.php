@@ -46,7 +46,9 @@ class HomeController extends Controller
             'comment'=>$comment,
         ]);
     }
-    
+    public function loginadmin(){
+        return view('admin.login');
+    }
     public function loginuser(){
         $sliderdata=Category::limit(10)->get();
         $setting=setting::first();
@@ -124,6 +126,19 @@ class HomeController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return $this->redirect('/');
+        return redirect()->intended('/');
+    }
+    public function loginadmincheck(Request $request){
+        $credentials=$request->validate([
+            'email'=>['required','email'],
+            'password'=>['required'],
+        ]);
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->intended('/home');
+        }
+        return back()->withErrors([
+            'error'=>'The provided credentials do not match our records',
+        ])->onlyInput('error');
     }
 }
