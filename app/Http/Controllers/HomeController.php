@@ -33,6 +33,16 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
+    public function redirectg(){
+                $sliderdata=Category::limit(10)->get();
+                $imagedata=Photos::limit(4)->get();
+                $setting=setting::first();
+                return view('user.userPanel',[
+                    'sliderdata'=>$sliderdata,
+                    'imagedata'=>$imagedata,
+                    'setting'=>$setting
+                ]);
+    }
 
     public function photo($id){
         $sliderdata=Category::limit(10)->get();
