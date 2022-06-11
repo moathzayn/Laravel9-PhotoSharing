@@ -37,7 +37,7 @@ Route::view('/loginuser','user.login');
 Route::get('/register',[HomeController::class,'register'])->name('register');
 Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 Route::post('/loginadmincheck',[HomeController::class,'loginadmincheck'])->name('loginadmincheck');
-Route::view('/loginadmin','admin.login');
+Route::view('/loginadmin','admin.login')->name('admin.login');
 
 Route::middleware([
     'auth:sanctum',
@@ -49,7 +49,7 @@ Route::middleware([
     })->name('dashboard');
 });
 //**************************AdminPanel**************************//
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
 Route::get('/',[AdminController::class,'index'])->name('index');
 //**************************AdminPanel**************************//
     Route::prefix('/setting')->name('setting')->controller(AdminController::class)->group(function() {
