@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\AdminUserController as AdminUserController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use Illuminate\Support\Facades\Route;
@@ -94,11 +95,22 @@ Route::get('/',[AdminController::class,'index'])->name('index');
         Route::post('/update/{id}','update')->name('update');
         Route::post('/store','store')->name('store');
         Route::get('/delete/{id}','destroy')->name('destroy');
+
     });
     Route::prefix('/comment')->name('comment.')->controller(AdminCommentController::class)->group(function(){
         Route::get('/','index')->name('index');
         Route::get('/show/{id}','show')->name('show');
         Route::post('/update/{id}','update')->name('update');
         Route::get('/delete/{id}','destroy')->name('destroy');
+    });
+    Route::prefix('/user')->name('user.')->controller(AdminUserController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/delete/{id}','destroy')->name('destroy');
+        Route::post('/addrole/{id}','addrole')->name('addrole');
+        Route::get('/destroyrole/{uid}/{rid}','destroyrole')->name('destroyrole');
+        Route::get('/destroyroleshow/{uid}/{rid}','destroyroleshow')->name('destroyroleshow');
     });
 });

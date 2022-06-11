@@ -37,7 +37,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/home">
+            <a class="nav-link" href="{{route('admin.user.index')}}">
               <i class="material-icons">account_circle</i>
               <p> User </p>
             </a>
