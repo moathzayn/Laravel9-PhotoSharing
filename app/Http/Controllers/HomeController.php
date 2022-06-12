@@ -70,11 +70,13 @@ class HomeController extends Controller
         $photo=Photos::find($id);
         $setting=setting::first();
         $comment= Comment::where('photo_id',$id)->get();
+        $user= User::find($photo->user_Id);
         return view('user.photo.show',[
             'data'=>$photo,
             'sliderdata'=>$sliderdata,
             'setting'=>$setting,
             'comment'=>$comment,
+            'user'=>$user,
         ]);
     }
     public function loginadmin(){

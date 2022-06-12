@@ -9,7 +9,18 @@
             <div class="video-code">
                 <img width="50%"  src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}">
             </div><!-- // video-code -->
+
             <h1>Upload Time:</h1><time datetime="2017-03-24T18:18">{{$data->created_at}}</time>
+            <div class="chanel-item">
+                <div class="chanel-thumb">
+                    <a href="#"><img src="demo_img/ch-1.jpg" alt=""></a>
+                </div>
+                <div class="chanel-info">
+                    <a class="title" href="#">{{$user->name}}</a>
+                    <span class="subscribers"></span>
+                </div>
+                <a href="#" class="subscribe">Follow</a>
+            </div>
             <div id="comments" class="post-comments">
                 <h3 class="post-box-title"><span></span> Details</h3>
                 <p>{!! $data->detail !!}</p>
@@ -44,16 +55,7 @@
             </div>
 
             <!-- Chanels Item -->
-            <div class="chanel-item">
-                <div class="chanel-thumb">
-                    <a href="#"><img src="demo_img/ch-1.jpg" alt=""></a>
-                </div>
-                <div class="chanel-info">
-                    <a class="title" href="#">Rabie Elkheir</a>
-                    <span class="subscribers">436,414 subscribers</span>
-                </div>
-                <a href="#" class="subscribe">Follow</a>
-            </div>
+
             <!-- // Chanels Item -->
 
 
