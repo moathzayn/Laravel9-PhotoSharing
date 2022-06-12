@@ -9,7 +9,7 @@
                     <i class="fa fa-close"></i>
                 </a>
                 <div id="logo">
-                    <a href="01-home.html"><img src="{{asset('assets')}}/user/img/logo.png" alt=""></a>
+                    <a href="/"><img src="{{asset('assets')}}/user/img/logo.png" alt=""></a>
                 </div>
             </div><!-- // col-md-2 -->
             <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs hidden-sm">
@@ -22,7 +22,7 @@
             </div><!-- // col-md-3 -->
             <div class="col-lg-3 col-md-3 col-sm-5 hidden-xs hidden-sm">
                 <ul class="top-menu">
-                    <li><a href="01-home.html">home</a></li>
+                    <li><a href="/">home</a></li>
                     <li><a href="#">trending</a></li>
                     <li><a href="14-history.html">history</a></li>
                 </ul>

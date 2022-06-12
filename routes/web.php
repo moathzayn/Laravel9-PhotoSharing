@@ -38,6 +38,8 @@ Route::get('/register',[HomeController::class,'register'])->name('register');
 Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 Route::post('/loginadmincheck',[HomeController::class,'loginadmincheck'])->name('loginadmincheck');
 Route::view('/loginadmin','admin.login')->name('admin.login');
+Route::get('/home/upload',[HomeController::class,'upload'])->name('upload');
+Route::post('/home/uploadstore',[HomeController::class,'uploadstore'])->name('uploadstore');
 
 Route::middleware([
     'auth:sanctum',

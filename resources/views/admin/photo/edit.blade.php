@@ -48,7 +48,6 @@
 
                           <textarea class="textarea" id='detail' name="detail">
                             {{$data->detail}}
-
                           </textarea>
                       </div>
                       </div>

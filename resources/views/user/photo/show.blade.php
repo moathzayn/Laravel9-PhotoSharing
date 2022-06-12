@@ -7,7 +7,7 @@
             <!-- Video Player -->
             <h1 class="video-title">{{$data->title}}</h1>
             <div class="video-code">
-                <img width="100%"  src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}">
+                <img width="50%"  src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}">
             </div><!-- // video-code -->
             <h1>Upload Time:</h1><time datetime="2017-03-24T18:18">{{$data->created_at}}</time>
             <div id="comments" class="post-comments">

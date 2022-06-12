@@ -22,7 +22,6 @@
                                     <th>Keywords</th>
                                     <th>Description</th>
                                     <th>Image</th>
-                                    <th>Gallery</th>
                                     <th>Status</th>
                                     <th  style='width: 120px;' class="text-center">Show/Edit/Delete</th>
 
@@ -40,9 +39,6 @@
                                         @if($rs->image)
                                             <img src="{{Storage::url($rs->image)}}" style="height: 40px" >
                                         @endif
-                                    </td>
-                                    <td>
-                                       <a href="/admin/image"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>
                                     </td>
                                     <td>{{$rs->status}}</td>
                                     <td class="td-actions text-right">

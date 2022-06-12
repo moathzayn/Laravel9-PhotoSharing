@@ -19,7 +19,7 @@ class HomeController extends Controller
         if(Auth::id()){
             if(Auth::user()->usertype=='0'){
                 $sliderdata=Category::limit(10)->get();
-                $imagedata=Photos::limit(4)->get();
+                $imagedata=Photos::all();
                 $setting=setting::first();
                 return view('user.userPanel',[
                     'sliderdata'=>$sliderdata,
@@ -34,14 +34,35 @@ class HomeController extends Controller
         }
     }
     public function redirectg(){
-                $sliderdata=Category::limit(10)->get();
-                $imagedata=Photos::limit(4)->get();
+                $sliderdata=Category::all();
+                $imagedata=Photos::all();
                 $setting=setting::first();
                 return view('user.userPanel',[
                     'sliderdata'=>$sliderdata,
                     'imagedata'=>$imagedata,
                     'setting'=>$setting
                 ]);
+    }
+    public function upload(){
+                $sliderdata=Category::limit(10)->get();
+                $setting=setting::first();
+                return view('user.upload',[
+                    'sliderdata'=>$sliderdata,
+                    'setting'=>$setting
+                ]);
+    }
+    public function uploadstore(Request $request){
+        $data= new Photos();
+        $data->title=$request->input('title');
+        $data->category_id=$request->input('category_id');
+        $data->user_id=Auth::id();
+        $data->description=$request->input('description');
+        $data->detail=$request->input('detail');
+        if($request->file('image')){
+            $data->image=$request->file('image')->store('images');
+        }
+        $data->save();
+        return redirect('/')->with('info','Your Photo has been send , Thank You');
     }
 
     public function photo($id){
@@ -122,6 +143,7 @@ class HomeController extends Controller
         $data->save();
         return redirect()->route('contact')->with('info','Your Message has been send , Thank You');
     }
+
     public function storecomment(Request $request){
         $data= new Comment();
         $data->user_id=Auth::id();
