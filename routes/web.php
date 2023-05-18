@@ -29,6 +29,7 @@ Route::get('/home',[HomeController::class,'redirect']);
 Route::get('/userpanel',[UserController::class,'index']);
 Route::get('/',[HomeController::class,'redirectg']);
 Route::get('/home/photo/{id}',[HomeController::class,'photo'])->name('photo');
+Route::get('/home/category/{id}',[HomeController::class,'category'])->name('category');
 Route::get('/home/aboutus',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/home/references',[HomeController::class,'references'])->name('references');
 Route::get('/home/contact',[HomeController::class,'contact'])->name('contact');
