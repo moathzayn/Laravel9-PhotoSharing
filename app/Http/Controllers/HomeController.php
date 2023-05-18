@@ -79,6 +79,19 @@ class HomeController extends Controller
             'user'=>$user,
         ]);
     }
+    public function category($id){
+        $sliderdata=Category::limit(10)->get();
+        $photo=Photos::find($id);
+        $setting=setting::first();
+        $comment= Comment::where('photo_id',$id)->get();
+        return view('user.category.show',[
+            'data'=>$photo,
+            'sliderdata'=>$sliderdata,
+            'setting'=>$setting,
+            'comment'=>$comment,
+
+        ]);
+    }
     public function loginadmin(){
         return view('admin.login');
     }

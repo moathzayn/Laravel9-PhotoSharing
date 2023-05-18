@@ -141,7 +141,7 @@
                     <a data-toggle="dropdown" href="#" class="user-area">
                         <div class="thumb"><img src="{{asset('assets')}}/user/demo_img/user-1.png" alt=""></div>
                         <h2>{{Auth::user()->name}}</h2>
-                        <h3>25 subscribers</h3>
+
                         <i class="fa fa-angle-down"></i>
                     </a>
                         <ul class="dropdown-menu account-menu">

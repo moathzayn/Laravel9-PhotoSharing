@@ -45,4 +45,11 @@
             </form>
         </div>
     </div>
+    <div class="col-md-10">
+        <br>
+        <h1>Our contact</h1>
+        <div id="watch">
+            {!! $setting->contact !!}
+        </div>
+    </div>
 @endsection
